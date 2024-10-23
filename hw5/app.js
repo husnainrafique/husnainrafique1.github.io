@@ -11,11 +11,13 @@ function displayRepos(repos) {
     repos.forEach(repo => {
         const repoDiv = document.createElement('div');
         repoDiv.innerHTML = `
-            <h3>${repo.name}</h3>
-            <p>${repo.description}</p>
+            <h3><i class="fab fa-github"></i> ${repo.name}</h3>
+            <p>${repo.description || "No description available"}</p>
             <p>Created on: ${new Date(repo.created_at).toDateString()}</p>
             <p>Updated on: ${new Date(repo.updated_at).toDateString()}</p>
-            <a href="${repo.html_url}">View Repo</a>
+            <p class="repo-stats">Commits: ${repo.size}</p>
+            <p class="repo-stats">Watchers: ${repo.watchers_count}</p>
+            <a href="${repo.html_url}" target="_blank">View Repository</a>
         `;
         gallery.appendChild(repoDiv);
     });
